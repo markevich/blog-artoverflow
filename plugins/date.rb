@@ -1,6 +1,21 @@
+# encoding: utf-8
 module Octopress
   module Date
+    # Названия дней недели -- контекстные и отдельностоящие
+    COMMOM_DAYNAMES_RU = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"]
+    DAYNAMES_RU = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"]
+    ABBR_DAYNAMES_RU = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"]
+    STANDALONE_ABBR_DAYNAMES_RU = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"]
 
+    # Названия месяцев -- сокращенные и полные, плюс отдельностоящие.
+    # Не забудьте nil в начале массиве (~)
+    # 
+    #
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    COMMON_MONTHNAMES_RU = [nil, "января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
+    MONTHNAMES_RU = [nil, "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+    COMMON_ABBR_MONTHNAMES_RU = [nil, "янв.", "февр.", "марта", "апр.", "мая", "июня", "июля", "авг.", "сент.", "окт.", "нояб.", "дек."]
+    ABBR_MONTHNAMES_RU = [nil, "Янв.", "Февр.", "Март", "Апр.", "Май", "Июнь", "Июль", "Авг.", "Сент.", "Окт.", "Нояб.", "Дек."]
     # Returns a datetime if the input is a string
     def datetime(date)
       if date.class == String
@@ -11,8 +26,10 @@ module Octopress
 
     # Returns an ordidinal date eg July 22 2007 -> July 22nd 2007
     def ordinalize(date)
-      date = datetime(date)
-      "#{date.strftime('%b')} #{ordinal(date.strftime('%e').to_i)}, #{date.strftime('%Y')}"
+      #date = datetime(date)
+      format_date(date, "%a, %e %B %Y")
+      #format_date(date, "%d %B %Y")
+     # "#{date.strftime('%b')} #{ordinal(date.strftime('%e').to_i)}, #{date.strftime('%Y')}"
     end
 
     # Returns an ordinal number. 13 -> 13th, 21 -> 21st etc.
@@ -36,8 +53,12 @@ module Octopress
       if format.nil? || format.empty? || format == "ordinal"
         date_formatted = ordinalize(date)
       else
+        format.gsub!(/%a/, ABBR_DAYNAMES_RU[date.wday])
+        format.gsub!(/%A/, DAYNAMES_RU[date.wday])
+        format.gsub!(/%b/, ABBR_MONTHNAMES_RU[date.mon])
+        format.gsub!(/%B/, COMMON_MONTHNAMES_RU[date.mon])
         date_formatted = date.strftime(format)
-        date_formatted.gsub!(/%o/, ordinal(date.strftime('%e').to_i))
+        #date_formatted.gsub!(/%o/, ordinal(date.strftime('%e').to_i))
       end
       date_formatted
     end
@@ -93,6 +114,12 @@ module Jekyll
       date_format = self.site.config['date_format']
       self.data['date_formatted']    = format_date(self.data['date'], date_format) if self.data.has_key?('date')
       self.data['updated_formatted'] = format_date(self.data['updated'], date_format) if self.data.has_key?('updated')
+    end
+  end
+  module Filters
+    include Octopress::Date
+    def date_ru(date, format)
+      format_date(date, format)
     end
   end
 end

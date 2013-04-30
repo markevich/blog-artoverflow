@@ -6,7 +6,7 @@ require "stringex"
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
 ssh_user       = "deployer@artoverflow.com"
 ssh_port       = "22"
-document_root  = "~/blog.artoverfloe.com/"
+document_root  = "~/blog.artoverflow.com/"
 rsync_delete   = true
 rsync_args     = ""  # Any extra arguments to pass to rsync
 deploy_default = "rsync"
