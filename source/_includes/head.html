@@ -5,6 +5,8 @@
 	<title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
 	<meta name="author" content="{{ site.author }}">
 
+    <meta name='wmail-verification' content='8d814b0c4d95aebf' />
+
     {% capture description %}{% if page.description %}{{ page.description }}{% elsif site.description %}{{ site.description }}{%else%}{{ content | raw_content }}{% endif %}{% endcapture %}
     <meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}">
     {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{%else%}<meta name="keywords" content="{{ site.keywords }}">{% endif %}
