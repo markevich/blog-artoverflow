@@ -3,7 +3,7 @@
 # ----------------------- #
 
 url: http://blog.artoverflow.com
-title: ArtOverflow Блог
+title: Art Overflow Блог
 subtitle: Блог о хорошем дизайне, сфокусированном на технологии
 author: Вячеслав Маркевич
 simple_search: http://google.com/search
@@ -90,7 +90,7 @@ disqus_short_name:
 disqus_show_comment_count: false
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-40948610-1
 
 # Facebook Like
 facebook_like: false
