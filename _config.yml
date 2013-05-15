@@ -7,7 +7,8 @@ title: ArtOverflow Блог
 subtitle: Блог о хорошем дизайне, сфокусированном на технологии
 author: Вячеслав Маркевич
 simple_search: http://google.com/search
-description:
+description: Советы, трюки и хаки в разработке с Ruby on Rails.
+keywords: ruby, ruby on rails, gem, web development, Ajax, SEO, scraping
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -39,7 +40,7 @@ pygments: false # default python pygments have been replaced by pygments.rb
 paginate: 10          # Posts per page on the blog index
 pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section
-excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
+excerpt_link: "Читать дальше &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
 
 titlecase: true       # Converts page and post titles to titlecase
 
@@ -58,13 +59,13 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 
 # Github repositories
-github_user:
+github_user: markevich
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
+twitter_user: TheEnOD
 twitter_tweet_button: true
 
 # Google +1
