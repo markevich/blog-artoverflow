@@ -83,7 +83,7 @@ rake setup:hello_world                # TODO
 
   Описание нашей задачи. Является необязательным компонентом, но если его опустить, то задача не будет отображаться в общем списке при выводе командой ```rake -T```
 
-* ```task :hello_world => :environment
+* ```task :hello_world => :environment```
 
   ```:hello_world``` - имя задачи.
 
