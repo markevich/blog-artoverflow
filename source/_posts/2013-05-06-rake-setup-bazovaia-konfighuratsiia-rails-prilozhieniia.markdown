@@ -149,8 +149,9 @@ task :setup => :environment do
   Rake::Task['setup:drop_database'].invoke
   Rake::Task['setup:create_database'].invoke
   Rake::Task['setup:migrate_database'].invoke
-  Rake::Task['setup:create_test_database'].invoke
   Rake::Task['setup:seed_database'].invoke
+  Rake::Task['setup:set_admin_user'].invoke
+  Rake::Task['setup:create_test_database'].invoke
 end
 ```
 
